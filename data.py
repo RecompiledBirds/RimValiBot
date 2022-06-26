@@ -1,9 +1,9 @@
 import os
 directory=os.getcwd()
-jsonFile=f"{directory}/config.json"
-cogFile=f"{directory}/cogs.json"
-imageDataFile=f"{directory}/imageData.json"
-gitWikiConfigFile=f"{directory}/gitWikiConfig.json"
+jsonFile=f"{directory}\config.json"
+cogFile=f"{directory}\cogs.json"
+imageDataFile=f"{directory}\imageData.json"
+gitWikiConfigFile=f"{directory}\gitWikiConfig.json"
 
 status_messages=['with code','in the mainframe','in the simulation']
 
