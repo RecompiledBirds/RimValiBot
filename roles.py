@@ -32,7 +32,7 @@ class ReactionRoleModule(commands.Cog,name="Reaction roles"):
     if (server not in dict):
       return
     if channel in dict[server]:
-      if id in dict[server][channel]:
+      if not id in dict[server][channel]:
         return
       if not emoji.name in dict[server][channel][id]:
         return
