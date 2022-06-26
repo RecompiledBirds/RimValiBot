@@ -43,7 +43,7 @@ async def on_ready():
     print(f"Current directory: {directory}")
     print(f"JSON data file: {jsonFile}")
     print(f"Cog JSON data file: {cogFile}")
-
+    print(f"Image file: {data.imageDataFile}")
     #Do any file setup that may be needed
     if(not os.path.exists(jsonFile)):
       with open(jsonFile,'w') as file:
