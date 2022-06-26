@@ -1,3 +1,6 @@
 .env
 *.bak
-
+*.json
+__pycache__/
+downloaded/
+*.py.bak

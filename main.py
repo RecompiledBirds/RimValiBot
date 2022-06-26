@@ -18,12 +18,16 @@ import discord.ext
 from discord.ext import commands
 import data
 import json
+import selfupdater
 from dotenv import load_dotenv
 intents=discord.Intents.all()
 directory=data.directory
 jsonFile=data.jsonFile
 cogFile=data.cogFile
 global cogs
+#this doesnt work on windows.
+if not sys.platform.startswith('win'):
+    selfupdater.selfupdate()
 client = commands.Bot(command_prefix = 'r.',intents=intents,case_insensitive=True) 
 
 load_dotenv()
