@@ -57,6 +57,7 @@ class ImageModule(commands.Cog, name="Avali Images"):
     images={}
     with open(data.imageDataFile, "r") as file:
       images = json.load(file)
+      print(images)
     count=len(images)
     await ctx.send(f"I have {count} avali!")
   @commands.hybrid_command(name="addimage",description="Add an avali to my database!")
