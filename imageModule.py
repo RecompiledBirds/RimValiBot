@@ -57,6 +57,7 @@ class ImageModule(commands.Cog, name="Avali Images"):
     images={}
     with open(data.imageDataFile, "r") as file:
       images = json.load(file)
+      print(data.imageDataFile)
       print(images)
     count=len(images)
     await ctx.send(f"I have {count} avali!")
