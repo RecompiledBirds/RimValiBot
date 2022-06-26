@@ -24,7 +24,7 @@ def selfupdate():
         shutil.rmtree(fp)
       else:
         os.remove(fp)
-    print(f"Updaing: {fileName}")
+    print(f"Updating: {fileName}")
     shutil.move(file,data.directory)
 
 
