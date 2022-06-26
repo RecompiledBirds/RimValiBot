@@ -2,20 +2,24 @@ import os
 import sys
 import subprocess
 try:
-    subprocess.check_call([sys.executable, '-m', 'pip', 'install', 
-'python-dotenv'])
+    import discord
+    import discord.ext
+    from discord.ext import commands
+    import git
+except:
+    try:
+        subprocess.check_call([sys.executable, '-m', 'pip', 'install', 
+    'python-dotenv'])
 
-#This fuckery installs the latest version of discord.py for us automatically, because repl wont.
-    subprocess.check_call([sys.executable, '-m', 'pip', 'install', 
-'discord','--upgrade','git+https://github.com/Rapptz/discord.py'])
-#This makes sure gitpython is installed for our github wiki things
-    subprocess.check_call([sys.executable, '-m', 'pip', 'install', 
-'gitpython'])
-except Exception as error:
-     print(error)
-import discord
-import discord.ext
-from discord.ext import commands
+    #This fuckery installs the latest version of discord.py for us automatically, because repl wont.
+        subprocess.check_call([sys.executable, '-m', 'pip', 'install', 
+    'discord','--upgrade','git+https://github.com/Rapptz/discord.py'])
+    #This makes sure gitpython is installed for our github wiki things
+        subprocess.check_call([sys.executable, '-m', 'pip', 'install', 
+    'gitpython'])
+    except Exception as error:
+         print(error)
+
 import data
 import json
 import selfupdater
