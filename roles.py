@@ -3,7 +3,7 @@ import time
 import discord.ext
 from discord.utils import get
 from discord.ext import commands, tasks
-from discord.ext.commands import has_permissions,  CheckFailure, check
+from discord.ext.commands import has_permissions, CheckFailure, check
 import os
 import data
 import json
@@ -33,17 +33,17 @@ class ReactionRoleModule(commands.Cog, name="Reaction roles"):
         if (server not in dict):
             return
         if channel in dict[server]:
-            if not id in dict[server][channel]:
+            if id not in dict[server][channel]:
                 return
-            if not emoji.name in dict[server][channel][id]:
+            if emoji.name not in dict[server][channel][id]:
                 return
             wantedID = dict[server][channel][id][emoji.name]
         else:
-            if not "none" in dict[server]:
+            if "none" not in dict[server]:
                 return
-            if not id in dict[server]["none"]:
+            if id not in dict[server]["none"]:
                 return
-            if not emoji.name in dict[server]["none"][id]:
+            if emoji.name not in dict[server]["none"][id]:
                 return
             wantedID = dict[server]["none"][id][emoji.name]
         role = discord.utils.get(guild.roles, name=wantedID)
@@ -68,15 +68,15 @@ class ReactionRoleModule(commands.Cog, name="Reaction roles"):
         if channel in dict[server]:
             if not dict[server][channel][id]:
                 return
-            if not emoji.name in dict[server][channel][id]:
+            if emoji.name not in dict[server][channel][id]:
                 return
             wantedID = dict[server][channel][id][emoji.name]
         else:
-            if not "none" in dict[server]:
+            if "none" not in dict[server]:
                 return
-            if not id in dict[server]["none"]:
+            if id not in dict[server]["none"]:
                 return
-            if not emoji.name in dict[server]["none"][id]:
+            if emoji.name not in dict[server]["none"][id]:
                 return
             wantedID = dict[server]["none"][id][emoji.name]
         role = discord.utils.get(guild.roles, name=wantedID)

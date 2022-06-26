@@ -5,7 +5,7 @@ import data
 import glob
 from dotenv import load_dotenv
 load_dotenv()
-path = f"{data.directory}\downloaded"
+path = f"{data.directory}\\downloaded"
 
 
 def selfupdate():

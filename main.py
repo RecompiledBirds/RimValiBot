@@ -6,14 +6,20 @@ try:
     import discord.ext
     from discord.ext import commands
     import git
-except:
+except BaseException:
     try:
         subprocess.check_call([sys.executable, '-m', 'pip', 'install',
                                'python-dotenv'])
 
-    # This fuckery installs the latest version of discord.py for us automatically, because repl wont.
-        subprocess.check_call([sys.executable, '-m', 'pip', 'install',
-                               'discord', '--upgrade', 'git+https://github.com/Rapptz/discord.py'])
+    # This fuckery installs the latest version of discord.py for us
+    # automatically, because repl wont.
+        subprocess.check_call([sys.executable,
+                               '-m',
+                               'pip',
+                               'install',
+                               'discord',
+                               '--upgrade',
+                               'git+https://github.com/Rapptz/discord.py'])
     # This makes sure gitpython is installed for our github wiki things
         subprocess.check_call([sys.executable, '-m', 'pip', 'install',
                                'gitpython'])

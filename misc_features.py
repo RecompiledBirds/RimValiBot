@@ -22,7 +22,7 @@ class MiscFeatures(commands.Cog):
             await self.bot.change_presence(status=discord.Status.online, activity=activity)
 
         await asyncio.sleep(20)
-        self.tick = self.tick+1
+        self.tick = self.tick + 1
 
 
 async def setup(bot: commands.Bot) -> None:

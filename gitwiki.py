@@ -7,7 +7,7 @@ import data
 import json
 import shutil
 import asyncio
-from discord.ext.commands import has_permissions,  CheckFailure, check
+from discord.ext.commands import has_permissions, CheckFailure, check
 import glob
 
 
@@ -64,7 +64,7 @@ class GitWiki(commands.Cog):
         with open(data.gitWikiConfigFile, "r") as file:
             dict = json.load(file)
         id = str(ctx.guild.id)
-        if not id in dict:
+        if id not in dict:
             return
 
         path = f"{dict[id]}/{article}"
@@ -78,8 +78,9 @@ class GitWiki(commands.Cog):
             for line in sections[section]:
                 if(len(f"{message}\n{line}") >= 2000):
                     print(line)
-                if(len(f"{message}\n{line}") >= 2000 or sections[section].index(line) == len(sections[section])-1):
-                    if sections[section].index(line) == len(sections[section])-1:
+                if(len(f"{message}\n{line}") >= 2000 or sections[section].index(line) == len(sections[section]) - 1):
+                    if sections[section].index(
+                            line) == len(sections[section]) - 1:
                         message = f"{message}\n{line}"
                     await ctx.send(message)
 
@@ -93,7 +94,7 @@ class GitWiki(commands.Cog):
             with open(data.gitWikiConfigFile, "r") as file:
                 dict = json.load(file)
             id = str(ctx.guild.id)
-            if not id in dict:
+            if id not in dict:
                 return
 
             path = dict[id]
@@ -102,11 +103,12 @@ class GitWiki(commands.Cog):
             files = glob.glob(f"{path}/*.md")
             message = "Articles:"
             for fp in files:
-                print(files.index(fp), len(files)-1)
+                print(files.index(fp), len(files) - 1)
                 newstr = fp.replace(path, '')
-                newstr = newstr[1:len(newstr)-3]
-                if len(f"{message}\n-{newstr}") >= 2000 or files.index(fp) == len(files)-1:
-                    if files.index(fp) == len(files)-1:
+                newstr = newstr[1:len(newstr) - 3]
+                if len(
+                        f"{message}\n-{newstr}") >= 2000 or files.index(fp) == len(files) - 1:
+                    if files.index(fp) == len(files) - 1:
                         message = f"{message}\n-{newstr}"
                     await ctx.send(message)
                     message = "Articles:"

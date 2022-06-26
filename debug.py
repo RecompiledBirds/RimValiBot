@@ -30,7 +30,8 @@ class Debugger(commands.Cog):
     @commands.hybrid_command(name="whatami")
     async def WhatAmI(self, ctx: commands.Context) -> None:
         embed = discord.Embed(
-            title="Hey!", description=" I'm RimVali, a avali-themed bot. If you're curious about how I work, you can find my source code here: https://replit.com/@NeziThe/RimVali#main.py")
+            title="Hey!",
+            description=" I'm RimVali, a avali-themed bot. If you're curious about how I work, you can find my source code here: https://replit.com/@NeziThe/RimVali#main.py")
         await ctx.send(embed=embed)
 
     @commands.hybrid_command(name="addcog")
@@ -41,7 +42,7 @@ class Debugger(commands.Cog):
         if(len(ctx.message.attachments) > 0):
             attachment = ctx.message.attachments[0]
             await attachment.save(path)
-            await ctx.send("Downloading: "+attachment.name)
+            await ctx.send("Downloading: " + attachment.name)
             print(f"Downloading: {attachment.name} to path: {path}")
             downloaded = "external"
 
@@ -82,7 +83,7 @@ class Debugger(commands.Cog):
         await ctx.send(f"Reloading cog: {cog}")
         try:
             await self.bot.unload_extension(cog)
-        except:
+        except BaseException:
             print(f"Cog: {cog} was not loaded ,loading now..")
         await self.bot.load_extension(cog)
         print(f"Reloaded cog: {cog}")
@@ -101,14 +102,14 @@ class Debugger(commands.Cog):
                     await ctx.send(f"Reloading cog: {cog}")
                     try:
                         await self.bot.unload_extension(cogs[cog])
-                    except:
+                    except BaseException:
                         print(
                             f"Cog: {cogs[cog]} was not loaded ,loading now..")
                     await self.bot.load_extension(cogs[cog])
                     print(f"Reloaded cog: {cog}")
                     await ctx.send(f"Reloaded cog: {cog}")
                 except Exception as error:
-                    await ctx.send("There was an error loading "+cog+":\n"+f'**`ERROR:`** {type(error).__name__} - {error}')
+                    await ctx.send("There was an error loading " + cog + ":\n" + f'**`ERROR:`** {type(error).__name__} - {error}')
         await ctx.send("All cogs have been reloaded.")
 
 

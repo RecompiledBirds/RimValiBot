@@ -44,8 +44,10 @@ class ImageModule(commands.Cog, name="Avali Images"):
             return
         imageToUse = random.choice(tuple(images))
         color = random.choice(tuple(data.colors))
-        embed = discord.Embed(title=f"{images[imageToUse]['title']} by {images[imageToUse]['author']}",
-                              url=images[imageToUse]['athrURL'], color=data.colors[color])
+        embed = discord.Embed(
+            title=f"{images[imageToUse]['title']} by {images[imageToUse]['author']}",
+            url=images[imageToUse]['athrURL'],
+            color=data.colors[color])
         embed.set_image(url=images[imageToUse]['imgURL'])
         await ctx.send(embed=embed)
 
@@ -59,17 +61,22 @@ class ImageModule(commands.Cog, name="Avali Images"):
         count = len(images)
         await ctx.send(f"I have {count} avali!")
 
-    @commands.hybrid_command(name="addimage", description="Add an avali to my database!")
+    @commands.hybrid_command(name="addimage",
+                             description="Add an avali to my database!")
     async def addImage(self, ctx: commands.Context, author: str, title: str, link: str) -> None:
         if(len(ctx.message.attachments) == 0):
             embed = discord.Embed(
-                title="Image not found", description="I cannot find an attached image..", color=data.colors['RED'])
+                title="Image not found",
+                description="I cannot find an attached image..",
+                color=data.colors['RED'])
             await ctx.send(embed=embed)
             return
         file_url = ctx.message.attachments[0].url
         UploadImage(ctx, author, title, file_url, link)
         embed = discord.Embed(
-            title="Image uploaded", description="I have added this image to my database.", color=data.colors['GREEN'])
+            title="Image uploaded",
+            description="I have added this image to my database.",
+            color=data.colors['GREEN'])
         await ctx.send(embed=embed)
 
 
