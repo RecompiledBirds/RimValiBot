@@ -1,11 +1,11 @@
 import os
-directory=os.getcwd()
-jsonFile=os.path.join(directory,"config.json")
-cogFile=os.path.join(directory,"cogs.json")
-imageDataFile=os.path.join(directory,"imageData.json")
-gitWikiConfigFile=os.path.join(directory,"gitWikiConfig.json")
+directory = os.getcwd()
+jsonFile = os.path.join(directory, "config.json")
+cogFile = os.path.join(directory, "cogs.json")
+imageDataFile = os.path.join(directory, "imageData.json")
+gitWikiConfigFile = os.path.join(directory, "gitWikiConfig.json")
 
-status_messages=['with code','in the mainframe','in the simulation']
+status_messages = ['with code', 'in the mainframe', 'in the simulation']
 
 colors = {
     'DEFAULT': 0x000000,
