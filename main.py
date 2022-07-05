@@ -64,7 +64,7 @@ async def start():
 
 @client.event
 async def on_ready():
-    start()
+    await start()
     print(f"logged in as {client.user}") 
     
 @client.command()
@@ -81,6 +81,6 @@ async def updateAndRestartCogs(ctx):
             except:
                 print(f"Cog: {cogs[cog]} was not loaded ,loading now..")
             await client.load_extension(cogs[cog])
-    start()
+    await start()
 
 client.run(os.getenv("TOKEN"))
