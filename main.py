@@ -68,7 +68,7 @@ async def on_ready():
     print(f"logged in as {client.user}") 
     
 @client.command()
- @commands.is_owner()
+@commands.is_owner()
 async def updateAndRestartCogs(ctx):
     with open(cogFile,"r") as file:
       cogs = json.load(file)
@@ -79,8 +79,7 @@ async def updateAndRestartCogs(ctx):
             try:
                 await client.unload_extension(cogs[cog])
             except:
-                print(f"Cog: {cogs[cog]} was not loaded ,loading now..")
-            await client.load_extension(cogs[cog])
+                print(f"Cog: {cogs[cog]} was not loaded.")
     await start()
 
 client.run(os.getenv("TOKEN"))
