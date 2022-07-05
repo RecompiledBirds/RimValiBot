@@ -34,7 +34,8 @@ class Debugger(commands.Cog):
     with open(data.cogFile,"r") as file:
         cogs = json.load(file)
     for cog in cogs:
-        await ctx.send(cog)
+        if os.path.exists(cog):
+            await ctx.send(cog)
     
   
   
