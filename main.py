@@ -78,10 +78,9 @@ async def updateAndRestartCogs():
         if(os.path.exists(cog)):
             try:
                 await client.unload_extension(cogs[cog])
-             except:
+            except:
                 print(f"Cog: {cogs[cog]} was not loaded ,loading now..")
             await client.load_extension(cogs[cog])
-    
     start()
 
 client.run(os.getenv("TOKEN"))
