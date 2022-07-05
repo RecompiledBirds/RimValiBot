@@ -36,9 +36,7 @@ client = commands.Bot(command_prefix = 'r.',intents=intents,case_insensitive=Tru
 
 load_dotenv()
     
-
-@client.event
-async def on_ready():
+async def start():
     #Just inform the admin of some basic info.
     print(f"Current directory: {directory}")
     print(f"JSON data file: {jsonFile}")
@@ -62,8 +60,28 @@ async def on_ready():
         if(os.path.exists(cog)):
             await client.load_extension(cogs[cog])
             print(f"Loading cog: {cogs[cog]}")
+
+
+@client.event
+async def on_ready():
+    start()
     print(f"logged in as {client.user}") 
     
-
+@client.command()
+async def updateAndRestartCogs():
+    with open(cogFile,"r") as file:
+      cogs = json.load(file)
+    await client.unload_extension('debug')
+    await client.load_extension('debug')
+    selfupdater.selfupdate()
+    for cog in cogs:
+        if(os.path.exists(cog)):
+            try:
+                await client.unload_extension(cogs[cog])
+             except:
+                print(f"Cog: {cogs[cog]} was not loaded ,loading now..")
+            await client.load_extension(cogs[cog])
+    
+    start()
 
 client.run(os.getenv("TOKEN"))
