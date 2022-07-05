@@ -68,11 +68,11 @@ async def on_ready():
     print(f"logged in as {client.user}") 
     
 @client.command()
+ @commands.is_owner()
 async def updateAndRestartCogs(ctx):
     with open(cogFile,"r") as file:
       cogs = json.load(file)
     await client.unload_extension('debug')
-    await client.load_extension('debug')
     selfupdater.selfupdate()
     for cog in cogs:
         if(os.path.exists(cog)):
