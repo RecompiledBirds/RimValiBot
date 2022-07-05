@@ -26,6 +26,18 @@ class Debugger(commands.Cog):
     view.add_item(button)
     await ctx.send("hello world",view=view)
   
+  
+  @commands.hybrid_command(name="listcogs")
+  @commands.is_owner()
+  async def ListCogs(self,ctx:commands.Context)->None:
+    cogs={}
+    with open(data.cogFile,"r") as file:
+        cogs = json.load(file)
+    for cog in cogs:
+        await ctx.send(cog)
+    
+  
+  
   @commands.hybrid_command(name="whatami")
   async def WhatAmI(self,ctx: commands.Context)->None:
     embed=discord.Embed(title="Hey!", description=" I'm RimVali, a avali-themed bot. If you're curious about how I work, you can find my source code here: https://replit.com/@NeziThe/RimVali#main.py")
