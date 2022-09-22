@@ -21,7 +21,7 @@ def UploadImage(ctx,author,title,url,link):
       "userThatAdded":ctx.message.author.name
     }
     with open(data.imageDataFile,"w") as file:
-        json.dump(images,file)
+        json.dump(images,file,indent=5)
 
 
 
@@ -37,6 +37,13 @@ class ImageModule(commands.Cog, name="Avali Images"):
     super().__init__()
 
   
+
+  @commands.hybrid_command(name="showdatabase",description="Attempt to show the database.json")
+  async def showDatabase(self,ctx:commands.Context)->None:
+    try:
+        await ctx.send(file=discord.File(data.imageDataFile))
+    except:
+        await ctx.send("Oops! Something went wrong :(")
 
   @commands.hybrid_command(name="avali",description="Get a avali image!")
   async def getImage(self,ctx: commands.Context)->None:
