@@ -19,7 +19,7 @@ class MiscFeatures(commands.Cog):
     if(self.tick>=random.randint(90,120)):
       choice = random.choice(data.status_messages)
       activity=discord.Game(choice)
-      await self.bot.change_presence(status=discord.Status.online,activity="Happy holidays!")#activity)
+      await self.bot.change_presence(status=discord.Status.online,activity=activity)
     
     await asyncio.sleep(20)
     self.tick=self.tick+1
