@@ -4,9 +4,10 @@ jsonFile=os.path.join(directory,"config.json")
 cogFile=os.path.join(directory,"cogs.json")
 imageDataFile=os.path.join(directory,"imageData.json")
 gitWikiConfigFile=os.path.join(directory,"gitWikiConfig.json")
-
-status_messages=['with code','in the mainframe','in the simulation']
-
+#normal status messages
+#status_messages=['with code','in the mainframe','in the simulation']
+#holiday messages
+status_messages=['in the snow', 'happy holidays everyone!', 'happy holidays from the RimVali Team']
 colors = {
     'DEFAULT': 0x000000,
     'WHITE': 0xFFFFFF,
